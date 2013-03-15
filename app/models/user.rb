@@ -9,12 +9,8 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(email, password)
-   user = User.where(:email => email, :password => password)
-    if user.empty?
-      nil
-    else
-      user
-    end
+    user = User.where(:email => email, :password => password)
+    user.empty? ? nil : user
   end
 
 end
