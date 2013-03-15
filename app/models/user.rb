@@ -12,5 +12,4 @@ class User < ActiveRecord::Base
     user = User.where(:email => email, :password => password)
     user.empty? ? nil : user
   end
-
 end
