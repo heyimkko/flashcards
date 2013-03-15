@@ -8,8 +8,13 @@ class User < ActiveRecord::Base
     self.password = Digest::MD5.hexdigest(password)
   end
 
-  def authenticate(password)
-    encrypt_password == self.password
+  def self.authenticate(email, password)
+   user = User.where(:email => email, :password => password)
+    if user.empty?
+      nil
+    else
+      user
+    end
   end
 
 end
