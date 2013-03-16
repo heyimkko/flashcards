@@ -29,7 +29,7 @@ helpers do
      @round ||= Round.find(params[:round_id])
   end
 
-  def update_num_correct
+  def update_num_correct # TODO: A way to do this on Round.update attribute (per Jeffrey suggestion)
     @round = Round.find(params[:round_id])
     @new_count = (@round.num_correct + 1)
     @round.update_attribute :num_correct, @new_count
