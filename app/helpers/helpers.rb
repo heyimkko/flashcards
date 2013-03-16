@@ -18,8 +18,6 @@ helpers do
      @round = Round.create :deck_id => 1,
                           :num_correct => 0,
                           :user_id => current_user.id
-     
-     # @shuffled_deck = Deck.find(1).cards.shuffle
      clear_deck
   end
 

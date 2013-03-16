@@ -33,6 +33,7 @@ end
 
 get '/session/:id' do
   session.clear
+  clear_deck
   redirect '/'
 end
 
