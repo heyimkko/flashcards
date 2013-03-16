@@ -6,4 +6,13 @@
   <input type="hidden" name="<%= @card.id %>">
   <input type="submit" value="Submit Answer!">
 </form>
+
+
+
+<% if @last_card %>
+<p>The last question was: <%= @last_card.answer %></p>
+<p>You inputted: <%= @guess %></p>
+<p>And you were: <%= @last_card.correct %></p>
+<p>Total score: <%= @round.num_correct %> of <%= @shuffled_deck.length %> </p>
+<%end %>
 </div>

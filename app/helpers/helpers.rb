@@ -11,7 +11,27 @@ helpers do
   def clear_deck
     shuffled_deck.each do |card|
       card.update_attribute("viewed", false)
+      card.update_attribute("correct", "Wrong!")
     end
+  end
+
+  def set_last_card
+    session[:last_card] = @card
+  end
+
+  def last_card
+    session[:last_card]
+  end
+
+  def set_guess(user_guess)
+    session[:guess] = user_guess
+  end
+
+  def guess
+    session[:guess]
+  end
+
+  def current_card  
   end
 
   def start_round
@@ -37,9 +57,12 @@ helpers do
 
   def evaluate_guess
      @card ||= Card.find(params[:card_id])
+     set_guess(params[:guess])
+     p guess
     if params[:guess].downcase.chomp == @card.answer.downcase.chomp
       update_num_correct
       @card.update_attribute("viewed", true)
+      @card.update_attribute("correct", "Correct!")
     else
       @card.update_attribute("viewed", true)
     end
@@ -50,8 +73,10 @@ helpers do
       redirect '/' # TODO: Redirect to an actual winner page
     else
       @shuffled_deck = shuffled_deck
-        find_round
+      find_round
       @card = @shuffled_deck.find{|card| card.viewed == false }
+      @last_card = last_card
+      @guess = guess
     end
   end
 end

@@ -5,6 +5,7 @@ class CreateCardsTable < ActiveRecord::Migration
       c.integer :deck_id
       c.text :definition
       c.boolean :viewed, :default => false
+      c.string :correct, :default => 'Wrong!'
       c.timestamps
     end
   end
