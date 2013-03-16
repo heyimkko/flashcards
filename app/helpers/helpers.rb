@@ -1,6 +1,11 @@
 helpers do
   
-
+  # def session
+  #   @session = session[:id]
+  # end
+  def current_user
+    @user ||= User.find(session[:id]) if session[:id]
+  end
 
   def counter
     @counter += 1

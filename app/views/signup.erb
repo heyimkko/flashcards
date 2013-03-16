@@ -1,6 +1,15 @@
 <div class="container">
   <h2>Signup for an Account:</h2>
-  <form method="post" action ="/user/new">
+
+  <% if @user.errors %>
+    <ul class="errors">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form method="post" action ="/user">
     <input type="email"  name = "user[email]" placeholder="email">
     <input type="password"  name="user[password]" placeholder="password">
     <input type="submit" value="signup">

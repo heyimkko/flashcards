@@ -21,7 +21,7 @@
 post '/play' do # deck id and user id using the params passed in from the play form
   @round = Round.create :deck_id => 1,
                         :num_correct => 0,
-                        :user_id => params[:user_id]
+                        :user_id => sessions[:id]
   @shuffled_deck = Deck.find(1).cards.shuffle                      
   redirect "/play/#{@round.id}"
 end

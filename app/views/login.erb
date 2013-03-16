@@ -1,9 +1,26 @@
 <div class="container">
+
+
+  <% if @error %>
+    <div class="errors"><%= @error %></div>
+  <% end %>
+
 <h2>Already have an account? Sign In:</h2>
-<div class="login">
-  <form method="post" action="/session/new">
-    <input type="email"  name = "user[email]" placeholder="email">
-    <input type="password"  name="user[password]" placeholder="password">
-    <input type="submit" value="login">
+  <form class ="form" method="post" action="/session">
+    
+    <p class="form_element">  
+      <input type="email"  name = "user[email]">
+      <label for="name">Name</label>  
+    </p> 
+
+    <p class="form_element"> 
+      <input type="password"  name="user[password]">
+      <label for="name">Email</label>  
+    </p> 
+
+    <p class="submit">  
+      <input type="submit" value="login">
+    </p>
+  
   </form>
 </div>

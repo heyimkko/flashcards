@@ -11,7 +11,29 @@
   <title></title>
 </head>
 <body>
+
+<nav>
+    <ul>
+      <% if current_user %>
+      <li><a id="sign-out" href="/session/<%= current_user.id %>">Sign Out</a></li>
+      <% else %>
+      <li><a class="btn" href="/login">Sign In</a></li>
+      <li><a class="btn" href="/signup">Sign Up</a></li>
+      <% end %>
+    </ul>
+  </nav>
+  
+
+
 <style type="text/css">
+
+body
+{
+/*background-image:url('http://collectorsshangri-la.com/media/catalog/product/cache/1/image/2405d7a09b0b5e10b17fc0dcd4e27dfd/r/e/revenge_nerds_cast4.jpg');*/
+background-color: pink;
+}
+
+
   .container {
     margin: 20px auto;
     width: 600px;
@@ -23,8 +45,40 @@
   }
 
   a.btn {
-    
+    border: 1px solid gray;
+    background-color: #c0d6e4;
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
   }
+
+  .errors {
+    color: red;
+  }
+
+
+  .form_element {
+    padding: 9px;  
+    outline: 0;  
+    font: normal 20px/100% Verdana, Tahoma, sans-serif; 
+    font-size: 40px; 
+    width: 200px;  
+    background: pink;  
+
+  }
+
+
+  .submit input {
+    width: auto;  
+    padding: 9px 15px;  
+    background: #617798;  
+    border: 0;  
+    font-size: 40px;  
+    color: #FFFFFF;  
+
+  }
+
 </style>
 
   <%= yield %>

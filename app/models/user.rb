@@ -2,7 +2,9 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_many :rounds
+  attr_reader :password_present
 
+  validates :email, :presence => true
 
   include BCrypt
 
@@ -22,3 +24,4 @@ class User < ActiveRecord::Base
     nil # either invalid email or wrong password
   end
 end
+
