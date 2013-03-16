@@ -10,7 +10,7 @@ Round.create :deck_id => 1,
 Deck.create :name => "Ruby Trivia",
             :num_cards => 38
 
-file = Hash[*IO.read('/Users/apprentice/Dropbox/DBC Banana Slugs/Kevin Ko/flashcards/db/flashcardssource.txt').split(/[\n*]/)] 
+file = Hash[*IO.read('public/flashcardssource.txt').split(/[\n*]/)] 
 file.each do |pair|
   Deck.find(1).cards << Card.create(:definition => pair[0], :answer => pair[1], :deck_id => 1)
 end

@@ -1,4 +1,3 @@
-
 get '/' do
   erb :index
 end
@@ -14,9 +13,9 @@ end
 # session creation (i.e. login) and closing session (logout)
 
 post '/session/new' do    # login
-  if User.authenticate(user[:email], user[:password])
+    @user = User.find_by_email(params[:user]["email"])
+  if User.authenticate(params[:user])
      p 'authenticated!!!'
-     @user = User.find_by_email(user[:email])
      session[:id] = @user.id
      erb :profile
   else
@@ -38,12 +37,13 @@ post '/user/new' do   # signup
       erb :index
     else
       session[:id] = @user.id
-      erb :profile  
+      erb :profile
     end
 end
 
 get '/user'  do  #profile
   unless session[:id] = nil
+    @user = User.find(session[:id])
     erb :profile
   else
     erb :index

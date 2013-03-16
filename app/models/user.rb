@@ -1,15 +1,24 @@
-require 'digest'
+require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_many :rounds
-  before_save :encrypt_password
 
-  def encrypt_password
-    self.password = Digest::MD5.hexdigest(password)
+
+  include BCrypt
+
+  def password
+    @password ||= Password.new(password_hash)
   end
 
-  def self.authenticate(email, password)
-    user = User.where(:email => email, :password => password)
-    user.empty? ? nil : user
+  def password=(pass)
+    @password = Password.create(pass)
+    self.password_hash = @password
+  end
+
+
+  def self.authenticate(test_user)
+    user = User.find_by_email(test_user['email'])
+    return user if user && (user.password == test_user['password'])
+    nil # either invalid email or wrong password
   end
 end
