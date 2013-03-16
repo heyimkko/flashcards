@@ -4,6 +4,7 @@ class CreateCardsTable < ActiveRecord::Migration
       c.text :answer
       c.integer :deck_id
       c.text :definition
+      c.boolean :viewed, :default => false
       c.timestamps
     end
   end
