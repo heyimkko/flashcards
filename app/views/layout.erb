@@ -12,32 +12,88 @@
 </head>
 <body>
 
-<nav>
-    <ul>
-      <% if current_user %>
-      <li><a id="sign-out" href="/session/<%= current_user.id %>">Sign Out</a></li>
-      <% else %>
-      <li><a class="btn" href="/login">Sign In</a></li>
-      <li><a class="btn" href="/signup">Sign Up</a></li>
-      <% end %>
-    </ul>
-  </nav>
-  
+<div class="top-nav">
+        <a href="/"><h1>Flashcards!!!</h1></a>
+        <ul class="nav">
+          <% if current_user %>
+           <li><a id="sign-out" href="/session/<%= current_user.id %>">Sign Out</a></li>
+             <% else %>
+           <li><a class="btn" href="/login">Sign In</a></li>
+           <li><a class="btn" href="/signup">Sign Up</a></li>
+            <% end %>
+        </ul>
+</div>
+
+
 
 
 <style type="text/css">
 
-body
-{
-/*background-image:url('http://collectorsshangri-la.com/media/catalog/product/cache/1/image/2405d7a09b0b5e10b17fc0dcd4e27dfd/r/e/revenge_nerds_cast4.jpg');*/
+
+
+.top-nav h1 {
+    background-color: black;
+    padding-left: 200px;
+    font-size: 32px;
+    color:white;
+    position: fixed;
+    width: 100%;
+}
+ .top-nav ul li {
+    display: inline;
+    padding-left: 30px;
+    color:white;
+    text-decoration: none;
+}
+.top-nav ul li a{
+    margin-top: 0;
+    color:white;
+    text-decoration: none;
+ }
+.nav {
+    color:white;
+    padding-left:200px;
+    text-align:center;    
+    width: 100%;
+    position: fixed;
+    padding-top: 10px;
+    text-decoration:none;
+}
+
+
+p {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    width: 50%;
+    padding-left: 200px;
+}
+
+h1, h2, h3 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+h2 {
+    padding-top: 100px;
+    padding-left: 200px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+}
+
+
+
+body {
 background-color: pink;
 }
 
 
   .container {
-    margin: 20px auto;
+    margin: 0px auto;
     width: 600px;
-    padding: 0px 20px 20px 20px;
+    padding: 50px 20px 20px 20px;
     border: 1px solid black;
   }
   th {
@@ -45,8 +101,7 @@ background-color: pink;
   }
 
   a.btn {
-    border: 1px solid gray;
-    background-color: #c0d6e4;
+    background-color: black;
     color: black;
     padding: 5px;
     text-decoration: none;
@@ -81,6 +136,8 @@ background-color: pink;
 
 </style>
 
+<div class="container">
   <%= yield %>
+</div>
 </body>
 </html>
