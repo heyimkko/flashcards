@@ -47,4 +47,13 @@ helpers do
     end
   end
 
+  def play
+    if finished?
+      redirect '/' # TODO: Redirect to an actual winner page
+    else
+      @shuffled_deck = shuffled_deck
+        find_round
+      @card = @shuffled_deck.find{|card| card.viewed == false }
+    end
+  end
 end
