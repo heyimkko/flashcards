@@ -1,7 +1,7 @@
 post '/play' do
-  @shuffled_deck = shuffled_deck
   start_round
-  redirect "/play/#{@round.id}"
+  # @shuffled_deck = shuffled_deck
+  redirect "/play/#{round_id}"
 end
 
 get '/play/:round_id' do  
@@ -10,14 +10,14 @@ get '/play/:round_id' do
 end
 
 post '/guess/:round_id/:card_id' do #gameplay backend
-  find_round
+  # find_round
   evaluate_guess
   set_last_card
-  redirect "/play/#{@round.id}"
+  redirect "/play/#{round_id}"
 end
 
 get '/:round_id/wrapup' do
-  find_round
+  round
   erb :wrapup
 end
 
