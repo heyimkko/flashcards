@@ -157,3 +157,7 @@ li {
   font-family: 'Raleway';
 }
 
+::selection {
+  background-color: #FF7F66;
+}
+

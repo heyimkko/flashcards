@@ -1,6 +1,5 @@
 <h1>Definition:</h1>
 <p id="def"><%= @card.definition %></p>
-<p><%= @card.answer %></p>
 <form action="/guess/<%= @card.id %>" method="post" name="guess-form" class="guess-form">
   <input type="text" name="guess" size="64" placeholder="Guess the term here!" class="input">
   <input type="hidden" name="<%= @card.id %>">
