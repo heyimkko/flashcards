@@ -1,8 +1,5 @@
-helpers do
 
- def current_user
-    @user ||= User.find(session[:id]) if session[:id]
-  end
+helpers do
 
   def set_deck
     session[:deck] = @round.deck_id
@@ -11,7 +8,11 @@ helpers do
   def deck
     session[:deck]
   end
- 
+
+  def current_user
+    @user ||= User.find(session[:id]) if session[:id]
+  end
+
   def clear_deck
     @deck.each do |card|
       card.update_attribute("viewed", false)
@@ -43,7 +44,7 @@ helpers do
     session[:last_card]
   end
 
-  def set_guess=(user_guess)
+  def set_guess(user_guess)
     session[:guess] = user_guess
   end
 
@@ -59,19 +60,19 @@ helpers do
     session[:round_id]
   end
 
-  def round_number(index)
-    index + 1
-  end
-
   def start_round
      @round = Round.create :deck_id => params[:deck_id],
-                           :num_correct => 0,
-                           :user_id => current_user.id
+                          :num_correct => 0,
+                          :user_id => current_user.id
      set_round_id
      set_deck
      @deck = Deck.find(deck).cards
      clear_deck
      init_count
+  end
+
+  def finished?
+    @deck.find{|card| card.viewed == false }.nil?
   end
 
   def round
@@ -86,7 +87,6 @@ helpers do
     end
   end
 
-
   def update_num_correct
     round
     @new_count = (@round.num_correct + 1)
@@ -94,8 +94,8 @@ helpers do
   end
 
   def evaluate_guess
-    @card ||= Card.find(params[:card_id])
-    set_guess = params[:guess]
+     @card ||= Card.find(params[:card_id])
+     set_guess(params[:guess])
     if params[:guess].downcase.chomp == @card.answer.downcase.chomp
       update_num_correct
       @card.update_attribute("viewed", true)
@@ -103,8 +103,6 @@ helpers do
     else
       @card.update_attribute("viewed", true)
     end
-
-    @foo = params[:guess]
   end
 
   def play
@@ -120,10 +118,5 @@ helpers do
       @guess = guess
       @count = count
     end
-   end
   end
-
-def finished?
-  @deck.find{|card| card.viewed == false }.nil?
 end
-
