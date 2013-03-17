@@ -42,7 +42,6 @@ end
 
 get '/session/:id' do
   session.clear
-  clear_deck
   redirect '/'
 end
 
@@ -51,7 +50,6 @@ get '/profile/:id' do
   @decks = Deck.all
   erb :profile
 end
-# user page (profile) and new user routes
 
 post '/user' do   # signup
   @user = User.new(params[:user])
@@ -61,6 +59,5 @@ post '/user' do   # signup
     else
       session[:id] = @user.id
       redirect "/profile/#{@user.id}"
-      # erb :profile
     end
 end
