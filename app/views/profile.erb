@@ -1,7 +1,9 @@
-<p>Welcome, <%= @user.email %>!</p>
+<h1>Welcome, <%= @user.email %>!</h1>
 <p>You have played <%= @user.rounds.length %> rounds.</p>
   <ul><% @user.rounds.each_with_index do |round, index| %>
-    <li>In round <strong><%= index + 1 %></strong> you got <strong><%= round.num_correct %></strong> correct.</li>
+    <p><li>
+      In round <strong><%= index + 1 %></strong> you got <strong><%= round.num_correct %></strong> correct.
+    </li></p>
     <% end %></ul>
 <form action="/play" method="post" name="play-game">
  <p>Pick a deck: </p>
