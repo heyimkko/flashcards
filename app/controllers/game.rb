@@ -8,7 +8,7 @@ get '/play' do
   erb :game
 end
 
-post '/guess/:card_id' do #gameplay backend
+post '/guess/:card_id' do
   evaluate_guess
   set_last_card
   redirect "/play"
@@ -18,4 +18,3 @@ get '/:round_id/wrapup' do
   round
   erb :wrapup
 end
-

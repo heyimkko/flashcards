@@ -27,13 +27,13 @@ get "/signup" do
 end
 
 post '/session' do
-    @user = User.find_by_email(params[:user]["email"])
+  @user = User.find_by_email(params[:user]["email"])
   if User.authenticate(params[:user])
      session[:id] = @user.id
      @decks = Deck.all
      erb :profile
   else
-     @error = "You need a proper email and password"
+     @error = "You need a proper (and unique) email and password"
      erb :login
   end
 end 
@@ -44,9 +44,13 @@ get '/session/:id' do
 end
 
 get '/profile/:id' do
-  @user = User.find(params[:id])
-  @decks = Deck.all
-  erb :profile
+  unless session[:id] == params[:id]
+    @user = User.find(session[:id])
+    @decks = Deck.all
+    erb :profile
+  else
+    redirect '/'
+  end
 end
 
 post '/user' do
