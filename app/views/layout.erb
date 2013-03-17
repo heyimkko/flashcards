@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Roboto:400,700|Raleway|Carter+One|Rock+Salt' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Roboto:400,700|Raleway|Carter+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/main.css">
 
@@ -15,8 +15,8 @@
   <% if current_user %>
     <li><a id="sign-out" href="/session/<%= current_user.id %>">Sign Out</a></li>
      <% else %>
-    <li><a class="btn" href="/login">Sign In</a></li>
-    <li><a class="btn" href="/signup">Sign Up</a></li>
+    <li><a href="/login">Sign In</a></li>
+    <li><a href="/signup">Sign Up</a></li>
   <% end %>
 </nav>
 

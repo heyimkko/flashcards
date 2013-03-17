@@ -3,13 +3,21 @@ body {
     color: #FFF;
 }
 
+a {
+  color: #2185C5;
+  text-shadow: -1px -1px #3E454C;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FF7F66;
+}
+
 p {
   font-family: 'Raleway', serif;
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 8px; 
-  /*width: 50%;*/
-  /*padding-left: 200px;*/
   letter-spacing: 1px;
   padding-left: 20px;
 }
@@ -22,9 +30,9 @@ strong {
 }
 
 blockquote #quote {
-    font-family: "Rock Salt";
+    font-family: Georgia;
     font-style: italic;
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-shadow: 1px 1px #000;
     color: #7ECEFD;
 }
@@ -39,7 +47,8 @@ h1 {
   font-weight: 700;
   font-size: 3.4em;
   color: #2185C5;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
+  text-shadow: 1px 1px #000;
 }
 
 h2 {
@@ -48,6 +57,7 @@ h2 {
   color: #2185C5;
   font-size: 2.4em;
   line-height: 48px;
+  text-shadow: 1px 1px #000;
 }
 
 .container {
@@ -97,6 +107,10 @@ form .button:hover {
     background-color: #FF7F66;
 }
 
+select {
+    width: 200px;
+}
+
 nav {
   float: right;
   background-color: #7ECEFD;
@@ -137,29 +151,9 @@ li {
 }
 
 .errors {
-  padding: 10px;
+  float:right;
+  padding-right: 50px;
   color: #FF7F66;
   font-family: 'Raleway';
-}
-
-/*
-.form_element {
-padding: 9px;  
-outline: 0;  
-font: normal 20px/100% Verdana, Tahoma, sans-serif; 
-font-size: 40px; 
-width: 200px;  
-background: pink;  
-
-}
-
-.submit input {
-width: auto;  
-padding: 9px 15px;  
-background: #617798;  
-border: 0;  
-font-size: 40px;  
-color: #FFFFFF;  */
-
 }
 

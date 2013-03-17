@@ -1,5 +1,5 @@
 
-<h2>Signup for an Account:</h2>
+<h2>Sign Up for an Account:</h2>
 <% if @user.errors %>
   <ul class="errors">
     <% @user.errors.full_messages.each do |message| %>
@@ -9,8 +9,8 @@
 <% end %>
 
 <form method="post" action ="/user">
-  <p><input type="email"  name = "user[email]" placeholder="Email" class="input"></p>
-  <p><input type="password"  name="user[password]" placeholder="Password" class="input"></p>
-  <p><input type="submit" value="signup" class="button"></p>
+  <p><input type="email"  name = "user[email]" placeholder="Email" class="input" size="48"></p>
+  <p><input type="password"  name="user[password]" placeholder="Password" class="input" size="48"></p>
+  <p><input type="submit" value="Sign Up" class="button"></p>
 </form>
 
