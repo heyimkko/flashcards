@@ -1,7 +1,7 @@
 <div class="container">
 <%= @card.definition %>
 <h1><%= @card.answer %></h1>
-<form action="/guess/<%= round_id %>/<%= @card.id %>" method="post" name="guess-form">
+<form action="/guess/<%= @card.id %>" method="post" name="guess-form">
   <input type="text" name="guess" size="64" placeholder="Guess the term here!">
   <input type="hidden" name="<%= @card.id %>">
   <input type="submit" value="Submit Answer!">

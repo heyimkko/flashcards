@@ -105,7 +105,7 @@ helpers do
   end
 
   def play
-    @deck = Deck.find(deck).cards
+    @deck = Deck.find(deck).cards.shuffle
     round
     if finished?
       # find_round
