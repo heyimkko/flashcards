@@ -1,0 +1,28 @@
+<div class="echo">
+</div>
+
+<div class="container">
+  <BR>
+    <BR>
+      <BR>
+
+  <div class="card">
+  <form action="/guess/<%= @round.id %>/<%= @card.id %>" method="post" name="guess-form" class="guess-form">
+    <input type="text" name="guess" size="64" placeholder="Guess the term here!">
+    <input type="hidden" name="<%= @card.id %>">
+    <input type="submit" value="Submit Answer!">
+  </form>
+
+  <p>Def: <%= @card.definition %></p>
+  <p>Ans: <%= @card.answer %></p>
+  <p>Guess: <%= @guess %></p>
+  <p>test: <%= @test %></p>
+
+  <% if @last_card %>
+  <p>The last question was: <%= @last_card.answer %></p>
+  <p>You inputted: <%= @guess %></p>
+  <p>And you were: <%= @last_card.correct %></p>
+  <p>Total score: <%= @round.num_correct %> of <%= @shuffled_deck.length %> </p>
+  <%end %>
+  </div>
+</div>

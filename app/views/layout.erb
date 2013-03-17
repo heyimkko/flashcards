@@ -1,140 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+  <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Roboto:400,700|Raleway|Carter+One|Rock+Salt' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/main.css">
 
   <title></title>
 </head>
 <body>
 
-<div class="top-nav">
-        <h1><a href="/">Flashcards!!!</a></h1>
-        <ul class="nav">
-          <% if current_user %>
-           <li><a id="sign-out" href="/session/<%= current_user.id %>">Sign Out</a></li>
-             <% else %>
-           <li><a class="btn" href="/login">Sign In</a></li>
-           <li><a class="btn" href="/signup">Sign Up</a></li>
-            <% end %>
-        </ul>
-</div>
+<nav>
+  <li id="logo"><a href="/">Flashy</a></li>
+  <ul class="nav">
+  <% if current_user %>
+    <li><a id="sign-out" href="/session/<%= current_user.id %>">Sign Out</a></li>
+     <% else %>
+    <li><a class="btn" href="/login">Sign In</a></li>
+    <li><a class="btn" href="/signup">Sign Up</a></li>
+  <% end %>
+</nav>
 
 
 
 
-<style type="text/css">
-
-
-
-.top-nav h1 {
-    background-color: black;
-    padding-left: 200px;
-    font-size: 32px;
-    color:white;
-    position: fixed;
-    width: 100%;
-}
- .top-nav ul li {
-    display: inline;
-    padding-left: 30px;
-    color:white;
-    text-decoration: none;
-}
-.top-nav ul li a{
-    margin-top: 0;
-    color:white;
-    text-decoration: none;
- }
-.nav {
-    color:white;
-    padding-left:200px;
-    text-align:center;    
-    width: 100%;
-    position: fixed;
-    padding-top: 10px;
-    text-decoration:none;
-}
-
-
-p {
-    font-family: Georgia, serif;
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 8px;
-    width: 50%;
-    padding-left: 200px;
-}
-
-h1, h2, h3 {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-}
-
-h2 {
-    padding-top: 100px;
-    padding-left: 200px;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 48px;
-}
-
-
-
-body {
-background-color: pink;
-}
-
-
-  .container {
-    margin: 0px auto;
-    width: 600px;
-    padding: 50px 20px 20px 20px;
-    border: 1px solid black;
-  }
-  th {
-    text-align: left;
-  }
-
-  a.btn {
-    background-color: black;
-    color: black;
-    padding: 5px;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  .errors {
-    color: red;
-  }
-
-
-  .form_element {
-    padding: 9px;  
-    outline: 0;  
-    font: normal 20px/100% Verdana, Tahoma, sans-serif; 
-    font-size: 40px; 
-    width: 200px;  
-    background: pink;  
-
-  }
-
-
-  .submit input {
-    width: auto;  
-    padding: 9px 15px;  
-    background: #617798;  
-    border: 0;  
-    font-size: 40px;  
-    color: #FFFFFF;  
-
-  }
-
-</style>
 
 <div class="container">
   <%= yield %>

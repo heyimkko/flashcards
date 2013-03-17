@@ -1,20 +1,16 @@
-<div class="container">
-<%= @card.definition %>
-<h1><%= @card.answer %></h1>
-<form action="/guess/<%= @card.id %>" method="post" name="guess-form">
-  <input type="text" name="guess" size="64" placeholder="Guess the term here!">
+<h1>Definition:</h1>
+<p id="def"><%= @card.definition %></p>
+<p><%= @card.answer %></p>
+<form action="/guess/<%= @card.id %>" method="post" name="guess-form" class="guess-form">
+  <input type="text" name="guess" size="64" placeholder="Guess the term here!" class="input">
   <input type="hidden" name="<%= @card.id %>">
-  <input type="submit" value="Submit Answer!">
+  <input type="submit" value="Submit Answer!" class="button">
 </form>
 
-
-
 <% if @last_card %>
-<p>The last answer was: <%= @last_card.answer %></p>
-<p>You inputted: <%= @guess %></p>
-<p>And you were: <%= @last_card.correct %></p>
-<p>Nubmer correct: <%= @round.num_correct %>
-<p>You are on card number <%= @count %> of <%= @deck.length %>
- </p>
+  <p>The last answer was: <strong><%= @last_card.answer %></strong></p>
+  <p>Your guess was: <strong><%= @guess %></strong></p>
+  <p>And you were: <strong><%= @last_card.correct %></strong></p>
+  <p>Number correct: <strong><%= @round.num_correct %></strong>
+  <p>You are on card number <strong><%= @count %></strong> of <%= @deck.length %></p>
 <%end %>
-</div>

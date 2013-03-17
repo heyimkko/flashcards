@@ -1,24 +1,24 @@
-<div class="container">
-  <% if @error %>
-    <div class="errors"><%= @error %></div>
-  <% end %>
 
 <h2>Already have an account? Sign In:</h2>
-  <form class ="form" method="post" action="/session">
-    
-    <p class="form_element">  
-      <input type="email"  name = "user[email]">
-      <label for="email">Email</label>  
-    </p> 
+<% if @error %>
+  <div class="errors"><%= @error %></div>
+<% end %>
 
-    <p class="form_element"> 
-      <input type="password"  name="user[password]">
-      <label for="password">Password</label>  
-    </p> 
-
-    <p class="submit">  
-      <input type="submit" value="login">
-    </p>
+<form class ="form" method="post" action="/session">
   
-  </form>
-</div>
+  <p class="form_element">  
+    <input type="email"  name = "user[email]" placeholder="Email" class="input">
+    <!-- <label for="email">Email</label>   -->
+  </p> 
+
+  <p class="form_element"> 
+    <input type="password"  name="user[password]" placeholder="Password" class="input">
+    <!-- <label for="password">Password</label>   -->
+  </p> 
+
+  <p class="submit">  
+    <input type="submit" value="login" class="button">
+  </p>
+
+</form>
+

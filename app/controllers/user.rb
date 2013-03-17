@@ -1,6 +1,16 @@
+before '/' do
+  current_user
+  if session[:id]
+    redirect "/profile/#{@user.id}"
+   else
+    erb :index
+  end
+end
+
 get '/' do
  unless session[:id] == nil
     @user = User.find(session[:id])
+    @decks = Deck.all
     erb :profile
   else
     erb :index
@@ -15,13 +25,6 @@ get "/signup" do
   @user = User.new
   erb :signup
 end
-
-# session creation (i.e. login) and closing session (logout)
-
-# get '/session/new' do
-#   @email = nil
-#   erb :login
-# end
 
 post '/session' do    # login
     @user = User.find_by_email(params[:user]["email"])
@@ -43,7 +46,11 @@ get '/session/:id' do
   redirect '/'
 end
 
-
+get '/profile/:id' do
+  @user = User.find(params[:id])
+  @decks = Deck.all
+  erb :profile
+end
 # user page (profile) and new user routes
 
 post '/user' do   # signup
@@ -53,15 +60,7 @@ post '/user' do   # signup
       erb :signup
     else
       session[:id] = @user.id
-      erb :profile
+      redirect "/profile/#{@user.id}"
+      # erb :profile
     end
 end
-
-# get '/user'  do  #profile
-#   unless session[:id] == nil
-#     @user = User.find(session[:id])
-#     erb :profile
-#   else
-#     erb :index
-#   end
-# end

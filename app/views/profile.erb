@@ -1,22 +1,14 @@
-<div class="container">
-  Welcome, <%= @user.email %>!
-  You have played <%= @user.rounds.length %> rounds.
+<p>Welcome, <%= @user.email %>!</p>
+<p>You have played <%= @user.rounds.length %> rounds.</p>
   <ul><% @user.rounds.each_with_index do |round, index| %>
-    <li>In round <%= index + 1 %> you got <%= round.num_correct %> correct.</li>
+    <li>In round <strong><%= index + 1 %></strong> you got <strong><%= round.num_correct %></strong> correct.</li>
     <% end %></ul>
 <form action="/play" method="post" name="play-game">
- Pick a deck: 
-<select name='deck_id'>
+ <p>Pick a deck: </p>
+<p><select name='deck_id'>
   <% @decks.each do |deck| %>
   <option value="<%= deck.id %>"><%= deck.name %></option>
-  <%end%>
-
-</select>
-  <input type="submit" value="Play Game!">
+  <% end %>
+</select></p>
+  <p><input type="submit" value="Play Game!" class="button"></p>
 </form>
-
-
-</div>
-
-
-

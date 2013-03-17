@@ -1,17 +1,16 @@
-<div class="container">
-  <h2>Signup for an Account:</h2>
 
-  <% if @user.errors %>
-    <ul class="errors">
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<h2>Signup for an Account:</h2>
+<% if @user.errors %>
+  <ul class="errors">
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-  <form method="post" action ="/user">
-    <input type="email"  name = "user[email]" placeholder="email">
-    <input type="password"  name="user[password]" placeholder="password">
-    <input type="submit" value="signup">
-  </form>
-</div>
+<form method="post" action ="/user">
+  <p><input type="email"  name = "user[email]" placeholder="Email" class="input"></p>
+  <p><input type="password"  name="user[password]" placeholder="Password" class="input"></p>
+  <p><input type="submit" value="signup" class="button"></p>
+</form>
+
