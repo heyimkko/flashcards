@@ -94,8 +94,8 @@ helpers do
   end
 
   def evaluate_guess
-     @card ||= Card.find(params[:card_id])
-     set_guess = params[:guess]
+    @card ||= Card.find(params[:card_id])
+    set_guess = params[:guess]
     if params[:guess].downcase.chomp == @card.answer.downcase.chomp
       update_num_correct
       @card.update_attribute("viewed", true)
@@ -103,6 +103,8 @@ helpers do
     else
       @card.update_attribute("viewed", true)
     end
+
+    @foo = params[:guess]
   end
 
   def play
