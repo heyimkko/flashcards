@@ -28,6 +28,7 @@ post '/session' do    # login
   if User.authenticate(params[:user])
      p 'authenticated!!!'
      session[:id] = @user.id
+     @decks = Deck.all
      erb :profile
   else
      p 'bounced!!!!'
@@ -47,6 +48,7 @@ end
 
 post '/user' do   # signup
   @user = User.new(params[:user])
+  @decks = Deck.all
     unless @user.save
       erb :signup
     else

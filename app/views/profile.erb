@@ -5,7 +5,18 @@
     <li>In round <%= index + 1 %> you got <%= round.num_correct %> correct.</li>
     <% end %></ul>
 <form action="/play" method="post" name="play-game">
-  <input type="submit" value="Let's Get Started!">
+ Pick a deck: 
+<select name='deck_id'>
+  <% @decks.each do |deck| %>
+  <option value="<%= deck.id %>"><%= deck.name %></option>
+  <%end%>
+
+</select>
+  <input type="submit" value="Play Game!">
 </form>
 
+
 </div>
+
+
+

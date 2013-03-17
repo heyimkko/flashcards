@@ -48,7 +48,7 @@ helpers do
   end
 
   def start_round
-     @round = Round.create :deck_id => 1,
+     @round = Round.create :deck_id => params[:deck_id],
                           :num_correct => 0,
                           :user_id => current_user.id
      clear_deck
