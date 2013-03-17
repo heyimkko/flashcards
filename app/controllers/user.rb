@@ -26,15 +26,13 @@ get "/signup" do
   erb :signup
 end
 
-post '/session' do    # login
+post '/session' do
     @user = User.find_by_email(params[:user]["email"])
   if User.authenticate(params[:user])
-     p 'authenticated!!!'
      session[:id] = @user.id
      @decks = Deck.all
      erb :profile
   else
-     p 'bounced!!!!'
      @error = "You need a proper email and password"
      erb :login
   end
@@ -51,7 +49,7 @@ get '/profile/:id' do
   erb :profile
 end
 
-post '/user' do   # signup
+post '/user' do
   @user = User.new(params[:user])
   @decks = Deck.all
     unless @user.save

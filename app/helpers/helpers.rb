@@ -86,7 +86,7 @@ helpers do
     end
   end
 
-  def update_num_correct # TODO: A way to do this on Round.update attribute (per Jeffrey suggestion)
+  def update_num_correct
     round
     @new_count = (@round.num_correct + 1)
     @round.update_attribute :num_correct, @new_count
@@ -108,11 +108,9 @@ helpers do
     @deck = Deck.find(deck).cards.shuffle
     round
     if finished?
-      # find_round
       clear_last_card
-      redirect "/#{round_id}/wrapup" # TODO: Redirect to an actual winner page
+      redirect "/#{round_id}/wrapup"
     else
-      # find_round
       next_card
       increment_count
       @last_card = last_card   
