@@ -2,7 +2,7 @@
 <p>You have played <%= @user.rounds.length %> rounds.</p>
   <ul><% @user.rounds.each_with_index do |round, index| %>
     <p><li>
-      In round <strong><%= index + 1 %></strong> you got <strong><%= round.num_correct %></strong> correct.
+      In round <strong><%= round_number(index) %></strong> you got <strong><%= round.num_correct %></strong> correct.
     </li></p>
     <% end %></ul>
 <form action="/play" method="post" name="play-game">

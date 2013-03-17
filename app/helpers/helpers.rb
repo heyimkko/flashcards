@@ -59,6 +59,10 @@ helpers do
     session[:round_id]
   end
 
+  def round_number(index)
+    index + 1
+  end
+
   def start_round
      @round = Round.create :deck_id => params[:deck_id],
                            :num_correct => 0,
@@ -81,6 +85,7 @@ helpers do
       end
     end
   end
+
 
   def update_num_correct
     round
@@ -119,3 +124,4 @@ helpers do
 def finished?
   @deck.find{|card| card.viewed == false }.nil?
 end
+

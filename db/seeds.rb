@@ -3,10 +3,6 @@ User.create :email => "a@a.com",
 User.create :email => "a@b.com",
             :password => "1234"
 
-# Round.create :deck_id => 1,
-#              :user_id => 1,
-#              :num_correct => 0
-
 Deck.create :name => "Ruby Trivia",
             :num_cards => 38
 
