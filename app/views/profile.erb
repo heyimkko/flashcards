@@ -1,8 +1,9 @@
 <div class="container">
   Welcome, <%= @user.email %>!
-
-  (Stats go here)
-
+  You have played <%= @user.rounds.length %> rounds.
+  <ul><% @user.rounds.each_with_index do |round, index| %>
+    <li>In round <%= index + 1 %> you got <%= round.num_correct %> correct.</li>
+    <% end %></ul>
 <form action="/play" method="post" name="play-game">
   <input type="submit" value="Let's Get Started!">
 </form>

@@ -6,7 +6,6 @@ end
 
 get '/play/:round_id' do  
   play
-  
   erb :game
 end
 
@@ -16,3 +15,9 @@ post '/guess/:round_id/:card_id' do #gameplay backend
   set_last_card
   redirect "/play/#{@round.id}"
 end
+
+get '/:round_id/wrapup' do
+  find_round
+  erb :wrapup
+end
+

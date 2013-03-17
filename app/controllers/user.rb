@@ -1,5 +1,10 @@
 get '/' do
-  erb :index
+ unless session[:id] == nil
+    @user = User.find(session[:id])
+    erb :profile
+  else
+    erb :index
+  end
 end
 
 get "/login" do
@@ -37,6 +42,7 @@ get '/session/:id' do
   redirect '/'
 end
 
+
 # user page (profile) and new user routes
 
 post '/user' do   # signup
@@ -49,11 +55,11 @@ post '/user' do   # signup
     end
 end
 
-get '/user'  do  #profile
-  unless session[:id] = nil
-    @user = User.find(session[:id])
-    erb :profile
-  else
-    erb :index
-  end
-end
+# get '/user'  do  #profile
+#   unless session[:id] == nil
+#     @user = User.find(session[:id])
+#     erb :profile
+#   else
+#     erb :index
+#   end
+# end

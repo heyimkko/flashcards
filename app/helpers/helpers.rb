@@ -15,6 +15,22 @@ helpers do
     end
   end
 
+  def init_count
+    session[:count] = 0
+  end
+
+  def increment_count
+    session[:count] += 1
+  end
+
+  def count
+    session[:count]
+  end
+
+  def clear_last_card
+    session[:last_card] = nil
+  end
+
   def set_last_card
     session[:last_card] = @card
   end
@@ -31,26 +47,33 @@ helpers do
     session[:guess]
   end
 
-  def current_card  
-  end
-
   def start_round
      @round = Round.create :deck_id => 1,
                           :num_correct => 0,
                           :user_id => current_user.id
      clear_deck
+     init_count
   end
 
   def finished?
-    shuffled_deck.find{|card| card.viewed == false }.nil?
+    @deck.find{|card| card.viewed == false }.nil?
   end
 
   def find_round
      @round ||= Round.find(params[:round_id])
   end
 
+  def next_card
+    @deck.each_with_index do |item, index|
+      if item.viewed == false
+        @card = item
+        @card_index = index + 1
+      end
+    end
+  end
+
   def update_num_correct # TODO: A way to do this on Round.update attribute (per Jeffrey suggestion)
-    @round = Round.find(params[:round_id])
+    # find_round #please God deliver us a session
     @new_count = (@round.num_correct + 1)
     @round.update_attribute :num_correct, @new_count
   end
@@ -69,14 +92,19 @@ helpers do
   end
 
   def play
+    shuffled_deck
     if finished?
-      redirect '/' # TODO: Redirect to an actual winner page
-    else
-      @shuffled_deck = shuffled_deck
       find_round
-      @card = @shuffled_deck.find{|card| card.viewed == false }
-      @last_card = last_card
+      clear_last_card
+      redirect "/#{@round.id}/wrapup" # TODO: Redirect to an actual winner page
+    else
+      find_round
+      next_card
+      increment_count
+      # @card = @deck.find{|card| card.viewed == false }
+      @last_card = last_card   
       @guess = guess
+      @count = count
     end
   end
 end

@@ -10,9 +10,11 @@
 
 
 <% if @last_card %>
-<p>The last question was: <%= @last_card.answer %></p>
+<p>The last answer was: <%= @last_card.answer %></p>
 <p>You inputted: <%= @guess %></p>
 <p>And you were: <%= @last_card.correct %></p>
-<p>Total score: <%= @round.num_correct %> of <%= @shuffled_deck.length %> </p>
+<p>Nubmer correct: <%= @round.num_correct %>
+<p>You are on card number <%= @count %> of <%= @deck.length %>
+ </p>
 <%end %>
 </div>
