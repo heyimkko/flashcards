@@ -93,8 +93,7 @@ helpers do
 
   def update_num_correct
     round
-    @new_count = (@round.num_correct + 1)
-    @round.update_attribute :num_correct, @new_count
+    @round.increment_num_correct
   end
 
   def evaluate_guess
